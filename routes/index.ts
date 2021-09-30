@@ -27,10 +27,11 @@ router.post('/pickPeople', async (req: express.Request, res: express.Response) =
 })
 
 router.get('/getData', async (req: express.Request, res: express.Response) => {
-    Station.find({}, 'name', function(err: any, stations: string | any[]){
+    Station.find({}, function(err: any, stations: string | any[]){
         if(err){
           console.log(err);
         } else{
+            console.log(stations);
             res.json(stations);
         } 
     })

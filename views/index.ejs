@@ -100,8 +100,8 @@
                                     success: function (data) {
                                         console.log(data)
                                         const records = document.getElementById('records');
+                                        records.innerHTML = "";
                                         for (var i = 0; i < data.length; i++) {
-                                            records.innerHTML = "";
                                             records.innerHTML += `
                                             <tr>
                                                 <td scope="col">`+ data[i].name + `</td>
@@ -111,7 +111,7 @@
                                     }
                                 });
                             }
-                            setInterval(getData, 5000);
+                            setInterval(getData, 2000);
                         })
                         </script>
 
