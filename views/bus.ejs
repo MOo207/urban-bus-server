@@ -88,8 +88,12 @@
                     <thead class="thead-dark">
                         <tr>
                             <!-- <th scope="col">ID</th> -->
-                            <th scope="col">Station Name</th>
-                            <th scope="col">People Count</th>
+                            <th scope="col">Bus Name</th>
+                            <th scope="col">Max Capacity</th>
+                            <th scope="col">Current Capacity</th>
+                            <th scope="col">Source</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Total Time</th>
                         </tr>
                     </thead>
                     <tbody id="records">
@@ -98,7 +102,7 @@
                             $(document).ready(function () {
                             function getData() {
                                 $.ajax({
-                                    url: "/getData",
+                                    url: "/bus/getBuses",
                                     type: 'GET',
                                     success: function (data) {
                                         console.log(data)
@@ -107,8 +111,12 @@
                                         for (var i = 0; i < data.length; i++) {
                                             records.innerHTML += `
                                             <tr>
-                                                <td scope="col">`+ data[i].name + `</td>
-                                                <td scope="col">`+ data[i].peopleCount + ` </td>
+                                                <td scope="col">`+ data[i].busName + `</td>
+                                                <td scope="col">`+ data[i].maxCapacity + ` </td>
+                                                <td scope="col">`+ data[i].currentCapacity + ` </td>
+                                                <td scope="col">`+ data[i].source + ` </td>
+                                                <td scope="col">`+ data[i].destination + ` </td>
+                                                <td scope="col">`+ data[i].totalTime + ` </td>
                                             </tr>`;
                                         }
                                     }

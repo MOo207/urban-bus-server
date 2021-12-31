@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 
 import indexRouter from './routes/index';
+import busRouter from './routes/bus';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public').toString()));
 
 app.use('/', indexRouter);
+app.use('/bus', busRouter);
 
 // error handler
 app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
@@ -25,7 +27,7 @@ app.use(function(err: any, req: express.Request, res: express.Response, next: ex
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {error: err });
 });
 
 export default app;
